@@ -30,7 +30,7 @@ public class LoggerInterceptor implements InvocationHandler {
      * @param target 真实的委托类
      * @return
      */
-    public Object bind(Object target) {
+    public synchronized Object bind(Object target) {
         this.target = target;
         return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
     }
