@@ -1,8 +1,11 @@
-package com.zero.headfirst.proxy.service;
+package com.zero.headfirst.proxy.jdk;
 
-import com.zero.headfirst.proxy.LoggerInterceptor;
+import com.zero.headfirst.proxy.service.OrderService;
+import com.zero.headfirst.proxy.service.OrderServiceImpl;
+import com.zero.headfirst.proxy.service.ProductService;
+import com.zero.headfirst.proxy.service.ProductServiceImpl;
 
-public class BootStrap {
+public class JdkProxyBootStrap {
     public static void main(String[] args) {
         OrderService orderService = new OrderServiceImpl();
         ProductService productService = new ProductServiceImpl();
