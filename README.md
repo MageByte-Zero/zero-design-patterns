@@ -14,6 +14,4 @@ Java23种设计模式学习记录
 * com.zero.design 包下包含了 23 种设计模式
 * com.zero.headfirst 是抽出常用的设计模式，并且参考 headfirst 归纳总结的设计模式，持续更新。
 
-
-## 设计模式文章详解
-* 策略模式详解
+* 设计模式文章详解 可以查看 wiki 文档 https://github.com/UniqueDong/zero-design-patterns/wiki
