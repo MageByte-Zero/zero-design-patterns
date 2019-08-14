@@ -12,8 +12,5 @@ public class UserClient {
         System.out.println("时间到了，可以关机了.....");
         facade.shutdown();
 
-        ComputerFacade facade2 = ComputerFacade.getInstance();
-
-        System.out.println(facade.getCpu() + "," + facade2.getCpu());;
     }
 }
