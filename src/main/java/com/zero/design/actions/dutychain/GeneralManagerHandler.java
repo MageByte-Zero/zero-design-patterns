@@ -4,9 +4,9 @@ package com.zero.design.actions.dutychain;
  * 总办处理器
  * Created by ljq97 on 2017/8/9.
  */
-public class GeneralManagerHndler extends AbstractLeaderHandler {
+public class GeneralManagerHandler extends AbstractLeaderHandler {
 
-    public GeneralManagerHndler(String handlerName) {
+    public GeneralManagerHandler(String handlerName) {
         super(handlerName);
     }
 

@@ -11,7 +11,7 @@ public class Client {
         //初始化责任链，应该使用单例
         AbstractLeaderHandler directorHandler = new DirectorHandler("张胜男");
         AbstractLeaderHandler managerHandler = new ManagerHandler("李四");
-        AbstractLeaderHandler generalManagerHndler = new GeneralManagerHndler("赵王");
+        AbstractLeaderHandler generalManagerHndler = new GeneralManagerHandler("赵王");
 
         //组织好责任对象关系
         directorHandler.setNextLeaderHandler(managerHandler).setNextLeaderHandler(generalManagerHndler);
