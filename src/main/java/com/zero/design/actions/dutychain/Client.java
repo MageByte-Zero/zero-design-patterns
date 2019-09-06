@@ -14,9 +14,7 @@ public class Client {
         AbstractLeaderHandler generalManagerHndler = new GeneralManagerHndler("赵王");
 
         //组织好责任对象关系
-        directorHandler.setNextLeaderHandler(managerHandler);
-        managerHandler.setNextLeaderHandler(generalManagerHndler);
-
+        directorHandler.setNextLeaderHandler(managerHandler).setNextLeaderHandler(generalManagerHndler);
         //开始请假操作
         LeaveRequest request = new LeaveRequest("倪升武", 15, "在家睡觉");
         directorHandler.handleRequest(request);

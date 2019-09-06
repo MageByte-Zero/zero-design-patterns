@@ -1,7 +1,7 @@
 package com.zero.design.actions.dutychain;
 
 /**
- * 经理处理器、
+ * 总办处理器
  * Created by ljq97 on 2017/8/9.
  */
 public class GeneralManagerHndler extends AbstractLeaderHandler {
