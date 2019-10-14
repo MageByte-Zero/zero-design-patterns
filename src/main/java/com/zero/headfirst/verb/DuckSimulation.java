@@ -3,6 +3,9 @@ package com.zero.headfirst.verb;
 import com.zero.headfirst.verb.adapter.GooseAdapter;
 import com.zero.headfirst.verb.decorator.QuackCounter;
 import com.zero.headfirst.verb.duck.*;
+import com.zero.headfirst.verb.factory.AbstractDuckFactory;
+import com.zero.headfirst.verb.factory.DuckCountFactory;
+import com.zero.headfirst.verb.factory.DuckFactory;
 import com.zero.headfirst.verb.goose.Goose;
 
 /**
@@ -11,20 +14,21 @@ import com.zero.headfirst.verb.goose.Goose;
 public class DuckSimulation {
     public static void main(String[] args) {
         DuckSimulation simulation = new DuckSimulation();
-        simulation.simulate();
+        AbstractDuckFactory duckCountFactory = new DuckCountFactory(new DuckFactory());
+        simulation.simulate(duckCountFactory);
     }
 
     /**
      * 模拟屏幕展示功能
      */
-    private void simulate() {
-        Quackable redheadDuck = new QuackCounter(new RedheadDuck());
-        Quackable mallarDuck = new QuackCounter(new MallarDuck());
-        Quackable rubberDuck = new QuackCounter(new RubberDuck());
-        Quackable duckCall = new QuackCounter(new DuckCall());
+    private void simulate(AbstractDuckFactory duckFactory) {
+        Quackable redheadDuck = duckFactory.createRedheadDuck();
+        Quackable mallarDuck = duckFactory.createMallarDuck();
+        Quackable rubberDuck = duckFactory.createRubberDuck();
+        Quackable duckCall = duckFactory.createDuckCall();
         //不想把天鹅的叫声统计，所以不用装饰器装饰
         GooseAdapter gooseAdapter = new GooseAdapter(new Goose());
-        System.out.println("使用装饰器模式后，统计叫的次数，不包含天鹅");
+        System.out.println("使用装饰器模式后，统计叫的次数，不包含天鹅,同时使用了工厂模式产生鸭子");
 
         simulate(redheadDuck);
         simulate(mallarDuck);
