@@ -7,6 +7,7 @@ import com.zero.headfirst.verb.factory.AbstractDuckFactory;
 import com.zero.headfirst.verb.factory.DuckCountFactory;
 import com.zero.headfirst.verb.factory.DuckFactory;
 import com.zero.headfirst.verb.goose.Goose;
+import com.zero.headfirst.verb.observer.Quackologist;
 
 /**
  * 模拟器
@@ -50,6 +51,10 @@ public class DuckSimulation {
         mallarFlock.add(mallarDuck2);
         mallarFlock.add(mallarDuck3);
         mallarFlock.add(mallarDuck4);
+
+        //观察者模式观察指定鸭子的叫,flockOfDucks 被观察者注册了 一个观察者
+        System.out.println("====观察者模式 start===");
+        flockOfDucks.registerObserver(new Quackologist());
 
         System.out.println("----主要鸭子群模拟器----");
         simulate(flockOfDucks);

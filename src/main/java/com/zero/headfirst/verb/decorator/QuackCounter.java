@@ -1,6 +1,7 @@
 package com.zero.headfirst.verb.decorator;
 
 import com.zero.headfirst.verb.duck.Quackable;
+import com.zero.headfirst.verb.observer.QuackObserver;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -25,5 +26,20 @@ public class QuackCounter implements Quackable {
 
     public static AtomicInteger getQuacks() {
         return atomicInteger;
+    }
+
+    @Override
+    public void registerObserver(QuackObserver observer) {
+        quack.registerObserver(observer);
+    }
+
+    @Override
+    public void removeObserver(QuackObserver observer) {
+        quack.removeObserver(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        quack.notifyObservers();
     }
 }

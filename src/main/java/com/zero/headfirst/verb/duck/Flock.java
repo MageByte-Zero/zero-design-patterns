@@ -1,5 +1,8 @@
 package com.zero.headfirst.verb.duck;
 
+import com.zero.headfirst.verb.observer.QuackObservable;
+import com.zero.headfirst.verb.observer.QuackObserver;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,5 +23,20 @@ public class Flock implements Quackable {
         for (Quackable quackable : quackers) {
             quackable.quack();
         }
+    }
+
+    @Override
+    public void registerObserver(QuackObserver observer) {
+        quackers.forEach(item -> item.registerObserver(observer));
+    }
+
+    @Override
+    public void removeObserver(QuackObserver observer) {
+        quackers.forEach(item -> item.removeObserver(observer));
+    }
+
+    @Override
+    public void notifyObservers() {
+        quackers.forEach(QuackObservable::notifyObservers);
     }
 }
