@@ -82,4 +82,16 @@ public class Cache<String, V> {
             writeLock.unlock();
         }
     }
+
+    /**
+     * 清空缓存
+     */
+    public void clear() {
+        writeLock.lock();
+        try {
+            DATA_MAP.clear();
+        } finally {
+            writeLock.unlock();
+        }
+    }
 }
