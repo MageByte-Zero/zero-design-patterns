@@ -29,14 +29,18 @@ class Point {
      * @return
      */
     public double distanceFromOrigin() {
+        //乐观读
         long stamp = sl.tryOptimisticRead();
+        // 读取共享数据到局部变量
         double currentX = x, currentY = y;
+        //读操作期间是否存在写操作，若存在则升级为悲观读锁，并重新读取共享变量
         if (!sl.validate(stamp)) {
             stamp = sl.readLock();
             try {
                 currentX = x;
                 currentY = y;
             } finally {
+                //释放悲观读
                 sl.unlockRead(stamp);
             }
         }
@@ -49,11 +53,12 @@ class Point {
      * @param newX
      * @param newY
      */
-    public void moveIfAtOrigin(double newX, double newY) { // upgrade
-        // Could instead start with optimistic, not read mode
+    public void moveIfAtOrigin(double newX, double newY) {
+        // 不能直接使用乐观读，不是只读的方法
         long stamp = sl.readLock();
         try {
             while (x == 0.0 && y == 0.0) {
+                //升级为写锁，若返回值不等于 0 则获取写锁成功
                 long ws = sl.tryConvertToWriteLock(stamp);
                 if (ws != 0L) {
                     stamp = ws;
@@ -61,6 +66,7 @@ class Point {
                     y = newY;
                     break;
                 } else {
+                    // 转换写锁失败则先释放读锁，再获取写锁
                     sl.unlockRead(stamp);
                     stamp = sl.writeLock();
                 }
