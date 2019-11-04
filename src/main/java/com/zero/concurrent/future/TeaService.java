@@ -16,6 +16,7 @@ public class TeaService {
         BoilWaterTask boilWaterTask = new BoilWaterTask(prepareTeaTaskFuture);
         Future<String> boilWaterTaskFuture = executorService.submit(boilWaterTask);
         System.out.println(boilWaterTaskFuture.get());
+        executorService.shutdown();
 
     }
 }
