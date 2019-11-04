@@ -1,9 +1,11 @@
 package com.zero.test;
 
 import com.zero.concurrent.CyclicBarrierDemo;
+import com.zero.concurrent.future.TeaService;
 import org.junit.Test;
 
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.ExecutionException;
 
 public class CyclicBarrierDemoTest {
 
@@ -13,5 +15,11 @@ public class CyclicBarrierDemoTest {
         CyclicBarrierDemo cyclicBarrierDemo = new CyclicBarrierDemo(cyclicBarrier);
         cyclicBarrierDemo.startRun();
         Thread.currentThread().join();
+    }
+
+    @Test
+    public void testFuture() throws ExecutionException, InterruptedException {
+        TeaService teaService = new TeaService();
+        teaService.makeTea();
     }
 }
