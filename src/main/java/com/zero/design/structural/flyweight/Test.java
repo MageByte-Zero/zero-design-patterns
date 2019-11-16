@@ -25,6 +25,8 @@ public class Test {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            poolFactory.close("mysqlPool", conn);
         }
 
     }
