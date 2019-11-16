@@ -14,6 +14,13 @@ public class Clinet {
         double booksPrice = 500.98;
         double price = context.calcPrice(booksPrice);
         System.out.println("图书的原价:" + booksPrice + "打折后的最终价格：" + price);
+
+        System.out.println("----切换会员----");
+        strategy = new PrimaryMemberStrategy();
+        context.setMemberStrategy(strategy);
+
+        price = context.calcPrice(booksPrice);
+        System.out.println("图书的原价:" + booksPrice + "打折后的最终价格：" + price);
     }
 
 }

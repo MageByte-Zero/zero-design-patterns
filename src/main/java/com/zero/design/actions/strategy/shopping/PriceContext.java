@@ -26,4 +26,8 @@ public class PriceContext {
     public double calcPrice(double booksPrice) {
         return memberStrategy.calcPrice(booksPrice);
     }
+
+    public void setMemberStrategy(MemberStrategy memberStrategy) {
+        this.memberStrategy = memberStrategy;
+    }
 }

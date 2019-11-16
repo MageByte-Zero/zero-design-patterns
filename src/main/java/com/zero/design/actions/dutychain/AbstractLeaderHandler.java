@@ -24,23 +24,12 @@ public abstract class AbstractLeaderHandler {
      */
     public abstract void handleRequest(LeaveRequest request);
 
-    public String getHandlerName() {
-        return handlerName;
-    }
-
-    public void setHandlerName(String handlerName) {
-        this.handlerName = handlerName;
-    }
-
-    public AbstractLeaderHandler getNextLeaderHandler() {
-        return nextLeaderHandler;
-    }
-
     /**
      * 设定责任链上的后继对象
      * @param nextLeaderHandler
      */
-    public void setNextLeaderHandler(AbstractLeaderHandler nextLeaderHandler) {
+    public AbstractLeaderHandler setNextLeaderHandler(AbstractLeaderHandler nextLeaderHandler) {
         this.nextLeaderHandler = nextLeaderHandler;
+        return nextLeaderHandler;
     }
 }
