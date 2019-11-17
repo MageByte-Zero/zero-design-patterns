@@ -47,6 +47,10 @@ public class ObservableDelegate implements QuackObservable {
     public void notifyObservers() {
         ReentrantReadWriteLock.ReadLock readLock = readWriteLock.readLock();
         readLock.lock();
-        observerList.forEach(item -> item.update(duck));
+        try {
+            observerList.forEach(item -> item.update(duck));
+        } finally {
+            readLock.unlock();
+        }
     }
 }
